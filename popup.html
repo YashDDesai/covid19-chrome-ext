@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery-2.2.4.min.js"></script>
+    
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body style="width: 800px; margin-top: 20px; margin-bottom: 20px;">
+    <div class="container">
+        <h5 class="text-center h5">Gujarat Overall</h5>
+        <p class="h-6" id="last_update">Last Update:</p>
+                
+        <table class="table text-center">
+            <thead>
+                <tr>
+                    <th class="text-danger">Confirmed</th>
+                    <th class="text-primary">Tested</th>
+                    <th class="text-success">Recovered</th>
+                    <th class="text-muted">Deaths</th>
+                    <th class="text-secondary">Quarantined</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="text-danger">
+                        <span class="h4" id="guj-conf-total"></span>
+                            <sub id="guj-conf-new"></sub>
+                    </td>
+                    <td class="text-primary"> 
+                        <span class="h4" id="guj-test-total"></span>
+                            <sub id="guj-test-new"></sub>
+                    </td>
+                    <td class="text-success">
+                        <span class="h4" id="guj-recov-total"></span class="h4">
+                            <sub id="guj-recov-new"></sub>
+                    </td>
+                    <td class="text-muted">
+                        <span id="guj-deaths-total" class="h4"></span>
+                            <sub id="guj-deaths-new"></sub>
+                    </td>
+                    <td class="text-secondary">
+                        <h5 id="guj-quar"></h5>
+                    </td>
+                </tr>                
+            </tbody>
+        </table>
+        <hr>
+        <h5 class="text-center h5" id="cur_dist_name"></h5>
+        
+                
+        <table class="table text-center">
+            <thead>
+                <tr>
+                    <th class="text-danger">Confirmed</th>
+                    <th class="text-primary">Tested</th>
+                    <th class="text-success">Recovered</th>
+                    <th class="text-muted">Deaths</th>
+                    <th class="text-secondary">Quarantined</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="text-danger">
+                        <span class="h4" id="dist-conf-total"></span>
+                            <sub id="dist-conf-new"></sub>
+                    </td>
+                    <td class="text-primary"> 
+                        <span class="h4" id="dist-test-total"></span>
+                            <sub id="dist-test-new"></sub>
+                    </td>
+                    <td class="text-success">
+                        <span class="h4" id="dist-recov-total"></span class="h4">
+                            <sub id="dist-recov-new"></sub>
+                    </td>
+                    <td class="text-muted">
+                        <span id="dist-deaths-total" class="h4"></span>
+                            <sub id="dist-deaths-new"></sub>
+                    </td>
+                    <td class="text-secondary">
+                        <h5 id="dist-quar"></h5>
+                    </td>
+                </tr>                
+            </tbody>
+        </table>
+        <button class="btn btn-outline-secondary" id="go-to-options">Options</button>
+    </div>
+    
+    <script src="popup.js"></script>
+</body>
+</html>
