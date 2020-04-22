@@ -5,15 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="jquery-2.2.4.min.js"></script>
+    <script src="offline/offline.min.js"></script>
+    <link rel="stylesheet" href="offline/themes/offline-theme-default.css">
+    <link rel="stylesheet" href="offline/themes/offline-language-english.css">
+
     
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
 
     <script src="bootstrap/js/bootstrap.min.js"></script>
 </head>
-<body style="width: 800px; margin-top: 20px; margin-bottom: 20px;">
-    <div class="container">
+<style>
+    .progress {
+        display: block;
+        text-align: center;
+        width: 0;
+        height: 3px;
+        background: #d9534f;
+        transition: width 1.3s;
+    }
+    .progress.hide {
+        opacity: 0;
+        transition: opacity 1.3s;
+    }
+</style>
+<body style="width: 800px; margin-top: 0px; margin-bottom: 20px;">
+    <div class="progress"></div>
+    <div class="container loading text-center" style="margin-top: 10px;">
+        <h6 id="loading text-muted">Loading...</h6>        
+    </div>
+    <div class="container main">
+        
+        <p class="h-6 text-right" id="last_update">Last Update:</p>
         <h5 class="text-center h5">Gujarat Overall</h5>
-        <p class="h-6" id="last_update">Last Update:</p>
                 
         <table class="table text-center">
             <thead>

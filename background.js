@@ -1,35 +1,52 @@
+chrome.storage.onChanged.addListener(function(changes, namespace) {
+	for(key in changes) {
+	  if(key === 'interval') {
+		chrome.storage.sync.get('interval', (data)=>{
+			chrome.alarms.create('refresh', { periodInMinutes: data.interval});
+			setBadge()
+		})
+	  }
+	}
+})
+
 chrome.runtime.onInstalled.addListener(() => {
-	getBadge()
-  	chrome.alarms.create('refresh', { periodInMinutes: 60*6 });
-});
+	chrome.alarms.create('refresh', { periodInMinutes: 6});
+	setBadge() 
+})
+
+chrome.browserAction.onClicked.addListener(()=>{
+	setBadge() 
+})
 
 chrome.alarms.onAlarm.addListener((alarm) => {
-	getBadge()
-});
+	setBadge()
+	console.log(alarm)
+})
 
-function getBadge(){
-	setInterval(
-		$.ajax({
-  			url: 'https://gujarat-covid19-udate-api.herokuapp.com/gujarat',
-  			type: "GET",
-  			dataType: 'json',
-  			cors: true ,
-  			contentType:'application/json',
-  			secure: true,
-  			headers: {
-    				'Access-Control-Allow-Origin': '*',
-  			},
-  			success: function (data) {
-				var total = data.confirmed.total
-				if(parseInt(total)>2000)
-					chrome.browserAction.setBadgeBackgroundColor({color: "red"})   
-				else if(parseInt(total)<=2000)
-					chrome.browserAction.setBadgeBackgroundColor({color: "green"})   
-				chrome.browserAction.setBadgeText({text: total});
-	
-  			},
-  			error: function(XMLHttpRequest, textStatus, error) {
-    				console.log(error)
- 			}
-		}), 3600000*6)
+
+
+function setBadge(){
+	$.ajax({
+		url: 'https://gujarat-covid19-udate-api.herokuapp.com/gujarat',
+		type: "GET",
+		dataType: 'json',
+		cors: true ,
+		contentType:'application/json',
+		secure: true,
+		headers: {
+			'Access-Control-Allow-Origin': '*',
+		},
+		success: function (data) {
+		var total = data.confirmed.total
+		if(parseInt(total)>3000)
+			chrome.browserAction.setBadgeBackgroundColor({color: "#FF1919"})   
+		else if(parseInt(total)<=3000)
+			chrome.browserAction.setBadgeBackgroundColor({color: "#000000"})   
+		chrome.browserAction.setBadgeText({text: total});
+
+		},
+		error: function(XMLHttpRequest, textStatus, error) {
+			console.log(error)
+		}
+	})
 }
