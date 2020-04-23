@@ -2,7 +2,7 @@ chrome.storage.onChanged.addListener(function(changes, namespace) {
 	for(key in changes) {
 	  if(key === 'interval') {
 		chrome.storage.sync.get('interval', (data)=>{
-			chrome.alarms.create('refresh', { periodInMinutes: data.interval});
+			chrome.alarms.create('refresh', { periodInMinutes: 60*data.interval});
 			setBadge()
 		})
 	  }
@@ -10,7 +10,7 @@ chrome.storage.onChanged.addListener(function(changes, namespace) {
 })
 
 chrome.runtime.onInstalled.addListener(() => {
-	chrome.alarms.create('refresh', { periodInMinutes: 6});
+	chrome.alarms.create('refresh', { periodInMinutes: 60*6});
 	setBadge() 
 })
 

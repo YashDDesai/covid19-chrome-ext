@@ -49,8 +49,8 @@ function set_app_interval(){
 $('#save_interval').on('click', set_app_interval)
 
 chrome.storage.sync.get('interval', (data)=>{
-  console.log("interval get"+data.interval)
-  document.getElementById(data.interval).selected = "true";
+  //console.log("interval get"+data.interval)
+  document.getElementById(data.interval||"6").selected = "true";
 })
 
 $(document).ready(function(){  

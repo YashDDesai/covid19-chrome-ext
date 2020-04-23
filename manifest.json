@@ -1,22 +1,26 @@
 {
     "name": "Gujarat Covid-19 Data",
-    "version": "3.0",
+    "version": "3.1",
     "description": "By Yash Desai",
-    "permissions": ["storage","<all_urls>", "alarms"],
+    "permissions": [
+	    "storage",
+	    "https://gujarat-covid19-udate-api.herokuapp.com/",
+	    "https://gujarat-covid19-udate-api.herokuapp.com/*", 
+	    "alarms"
+    ],
     "browser_action": {
         "default_icon": "images/coronavirus128.png",
 	"icons": {
 	    "16": "images/coronavirus16.png",
-            "32": "images/coronavirus32.png",
-            "48": "images/coronavirus48.png",
-            "128": "images/coronavirus128.png"		
+        "32": "images/coronavirus32.png",
+        "48": "images/coronavirus48.png",
+        "128": "images/coronavirus128.png"		
 	},
         "default_popup": "popup.html"
     },
-    "background":
-        {
-          "scripts":["jquery-2.2.4.min.js", "background.js"],
-	"persistent": false
+    "background":{
+        "scripts":["jquery-2.2.4.min.js", "background.js"],
+	    "persistent": false
     },
     "manifest_version": 2, 
     "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'",
