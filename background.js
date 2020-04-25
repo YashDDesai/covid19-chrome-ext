@@ -44,18 +44,20 @@ function checkForUpdate(){
 				'Access-Control-Allow-Origin': '*',
 			},
 			success: function (load) {
+				var currentdate = new Date();
 				//console.log(data)
 				chrome.storage.sync.get('checkUpdate', (data)=>{
-					console.log("got last_update: "+data.checkUpdate)
+					//console.log(currentdate.getHours() + ":"+ currentdate.getMinutes() + ":"+ currentdate.getSeconds()+" >> got last_update: "+data.checkUpdate)
 					if(load===data.checkUpdate){
-						console.log("-----no changes----")
+						console.log("%c-----no changes----","color:yellow")
 					}
 					else{
-						console.log("----update found----")
+						console.log("%c----update found----", "color:green")
 						chrome.storage.sync.set({
 							checkUpdate: load,
 						}, function() {
-							console.log("last_update set: "+load)
+							//console.log(currentdate.getHours() + ":"+ currentdate.getMinutes() + ":"+ currentdate.getSeconds()+" >> last_update set: "+load)
+							
 							setBadge()
 						});
 					}
@@ -63,10 +65,10 @@ function checkForUpdate(){
 				
 			},
 			error: function(XMLHttpRequest, textStatus, error) {
-				console.log(error)
+				console.error(error)
 			}
 		})
-	}, 1000*60*60)
+	}, 60*1000)
 }
 checkForUpdate()
 
@@ -84,16 +86,16 @@ function setBadge(){
 		},
 		success: function (data) {
 		var total = data.confirmed.total
-		if(parseInt(total)>3000)
+		if(parseInt(total)>4000)
 			chrome.browserAction.setBadgeBackgroundColor({color: "#FF1919"})   
-		else if(parseInt(total)<=3000)
+		else if(parseInt(total)<=4000)
 			chrome.browserAction.setBadgeBackgroundColor({color: "#000000"})   
 		chrome.browserAction.setBadgeText({text: total});
-		console.log("badge updated")
+		//console.log("badge updated")
 
 		},
 		error: function(XMLHttpRequest, textStatus, error) {
-			console.log(error)
+			console.error(error)
 		}
 	})
 }
