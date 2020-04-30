@@ -73,7 +73,7 @@
 // checkForUpdate()
 
 
-setInterval(setBadge, 2000)
+setInterval(setBadge, 5*1000*60)
 
 
 
