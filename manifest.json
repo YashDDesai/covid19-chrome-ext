@@ -1,6 +1,6 @@
 {
     "name": "Gujarat Covid-19 Data",
-    "version": "5.0.0",
+    "version": "5.0.1",
     "description": "By Yash Desai",
     "permissions": [
 	    "storage",

@@ -73,13 +73,11 @@
 // checkForUpdate()
 
 
-setInterval(setBadge, 5*1000*60)
-
-
+window.setInterval(setBadge, 1000)
 
 function setBadge(){
 	$.ajax({
-		// url: 'guj.json',
+		//url: 'guj.json',
 		url: 'https://gujarat-covid19-udate-api.herokuapp.com/gujarat',
 		type: "GET",
 		dataType: 'json',
@@ -96,7 +94,7 @@ function setBadge(){
 		else if(parseInt(total)<=5000)
 			chrome.browserAction.setBadgeBackgroundColor({color: "#000000"})   
 		chrome.browserAction.setBadgeText({text: total});
-		//console.log("badge updated")
+		console.log("badge updated >> "+total)
 
 		},
 		error: function(XMLHttpRequest, textStatus, error) {
