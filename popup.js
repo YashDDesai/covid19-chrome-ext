@@ -128,8 +128,8 @@ $(document).ready(function(){
           $('#dist-conf-total').html(data[0].confirmed.total)
           $('#dist-conf-new').html(`<i>&uarr;</i> ${data[0].confirmed.new || 0}`)
     
-         // $('#dist-test-total').html(data[0].tested.total)
-         // $('#dist-test-new').html(`<i>&uarr;</i> ${data[0].tested.new || 0}`)
+         $('#dist-test-total').html(data[0].tested.total)
+         $('#dist-test-new').html(`<i>&uarr;</i> ${data[0].tested.new || 0}`)
     
           $('#dist-recov-total').html(data[0].recovered.total)
           $('#dist-recov-new').html(`<i>&uarr;</i> ${data[0].recovered.new || 0}`)
