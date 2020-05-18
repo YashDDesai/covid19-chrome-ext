@@ -72,8 +72,8 @@
 // }
 // checkForUpdate()
 
-
-window.setInterval(setBadge, 1000)
+setBadge();
+window.setInterval(setBadge, 1000*60*60*6)
 
 function setBadge(){
 	$.ajax({
@@ -89,11 +89,11 @@ function setBadge(){
 		},
 		success: function (data) {
 		var total = data.confirmed.total
-		if(parseInt(total)>5000)
+		if(parseInt(total)>15000)
 			chrome.browserAction.setBadgeBackgroundColor({color: "#FF1919"})   
-		else if(parseInt(total)<=5000)
+		else if(parseInt(total)<=15000)
 			chrome.browserAction.setBadgeBackgroundColor({color: "#000000"})   
-		chrome.browserAction.setBadgeText({text: total});
+		chrome.browserAction.setBadgeText({text: new Intl.NumberFormat( 'en-US', { maximumFractionDigits: 1,notation: "compact" , compactDisplay: "short" }).format(total)});
 		console.log("badge updated >> "+total)
 
 		},
